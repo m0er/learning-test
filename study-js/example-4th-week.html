@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>상품</h1>
+    <ul>
+      <li id="product1" data-price="10000">
+        가디건
+      </li>
+      <li id="product2" data-price="25000">
+        청바지
+      </li>
+      <li id="product3" data-price="13000">
+        니트
+      </li>
+    </ul>
+
+    <h1>장바구니</h1>
+    <ul id="cart">
+
+    </ul>
+
+    <script>
+      var product1 = document.getElementById('product1'),
+        cart = document.getElementById('cart');
+
+      var DomWrapper = function() {
+        this.getById = function(id) {
+          return document.getElementById(id);
+        }
+      };
+
+      var dw1 = new DomWrapper();
+
+      var dw2 = {
+        getById: function(id) {
+          return document.getElementById(id);
+        },
+        removeById: function(id) {
+          var elem = this.getById(id);
+          if (elem.parentNode) {
+            elem.parentNode.removeChild(elem);
+          }
+        },
+        getValueById: function(id) {
+          return this.getById(id).textContent.trim();
+        }
+      };
+
+      var dw3 = (function() {
+        return {
+          getById: function(id) {
+            return document.getElementById(id);
+          }
+        };
+      })();
+
+      // add click listener
+      product1.addEventListener('click', selectProduct);
+
+      function selectProduct(e) {
+        // create element
+        var selectedProduct = e.target,
+          newProductForCart = document.createElement('li'),
+          newProductForCartTitleTextNode = document.createTextNode(selectedProduct.childNodes[0].nodeValue);
+
+        // get price and set attribute
+        newProductForCart.setAttribute('data-price', e.target.getAttribute('data-price'));
+
+        // add text node with value
+        newProductForCart.appendChild(newProductForCartTitleTextNode);
+
+        // add to cart
+        cart.appendChild(newProductForCart);
+      }
+    </script>
+  </body>
+</html>

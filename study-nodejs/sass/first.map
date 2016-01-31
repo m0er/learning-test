@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "first.css",
+	"sources": [
+		"first.scss"
+	],
+	"mappings": "AAGA,IAAI,AAAC,CACH,IAAI,CAAE,IAAI,CAJI,SAAS,CAAE,UAAU,CAKnC,KAAK,CAJS,IAAI,CAKnB",
+	"names": []
+}

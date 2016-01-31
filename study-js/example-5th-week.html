@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <script>
+      function Class1() {
+        this.name = 'class1';
+      }
+
+      Class1.prototype.method1 = function() {
+        console.log('class1 method1');
+      }
+
+      function Class2() {
+        // this.method1 = function() {
+        //   console.log('class2 method1');
+        // }
+        this.method2 = function() {
+          console.log('class2 method2');
+        }
+      }
+
+      Class2.prototype = new Class1();
+
+      var c2 = new Class2();
+      c2.method1();
+
+      function Exception(message) {
+        this.message = message;
+        this.name = 'Exception';
+      }
+
+      function Weapon() {
+        this.attack = function() {
+          throw new Exception('You should override this method.');
+        }
+      }
+
+      function Sword() {
+        this.attack = function() {
+          console.log('swing sword');
+        }
+      }
+
+      function Axe() {
+        this.attack = function() {
+          console.log('chop axe');
+        }
+      }
+
+      Sword.prototype = new Weapon();
+      Axe.prototype = new Weapon();
+
+      function Hero() {
+        this.weapon = null;
+        this.swapWeapon = function(weapon) {
+          this.weapon = weapon;
+        };
+        this.attack = function() {
+          this.weapon.attack();
+        }
+      }
+
+      var sword = new Sword(),
+          axe = new Axe(),
+          hero = new Hero();
+
+      hero.swapWeapon(sword);
+      hero.attack();
+      hero.swapWeapon(axe);
+      hero.attack();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <style rel="stylesheet" type="text/css">
+      .nested-menu:target {
+        display: block;
+      }
+
+      .nested-menu:not(target) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="#nested-menu1">Menu1</a>
+        <ul id="nested-menu1" class="nested-menu">
+          <li>
+            <a href="#">nested menu1</a>
+          </li>
+          <li>
+            <a href="#">nested menu2</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#nested-menu2">Menu2</a>
+        <ul id="nested-menu2" class="nested-menu">
+          <li>
+            <a href="#">nested menu1</a>
+          </li>
+          <li>
+            <a href="#">nested menu2</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#nested-menu3">Menu3</a>
+        <ul id="nested-menu3" class="nested-menu">
+          <li>
+            <a href="#">nested menu1</a>
+          </li>
+          <li>
+            <a href="#">nested menu2</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>
